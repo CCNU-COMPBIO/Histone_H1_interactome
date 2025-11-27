@@ -1,0 +1,16 @@
+parm wild_rw.prmtop
+trajin wild_run3_rw.nc 2500 25000 10
+
+# 定义矢量：从两组原子几何中心相减而来
+vector vH  :1154-1158@C,N,O,CA :1158-1162@C,N,O,CA
+vector vB  :1169,1181@C,N,O,CA :1170,1180@C,N,O,CA
+vector vHT :1174-1178@C,N,O,CA :1154-1158@C,N,O,CA
+vector vBT :1174-1178@C,N,O,CA :1169,1181@C,N,O,CA
+vector vBH :1169,1181@C,N,O,CA :1154-1158@C,N,O,CA
+
+# 计算夹角（向量间夹角）
+vectormath name angle1 vec1 vH  vec2 vHT dotangle out angle/wild_angle/phi1_run3.dat
+vectormath name angle2 vec1 vBH vec2 vBT dotangle out angle/wild_angle/phi2_run3.dat
+
+run
+
